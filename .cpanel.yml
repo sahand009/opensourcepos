@@ -2,12 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/shinchauorg/public_html/
-    - /bin/cp -R app $DEPLOYPATH
     - /bin/cp -R public $DEPLOYPATH
-    - /bin/cp -R vendor $DEPLOYPATH
-    - /bin/cp -R writable $DEPLOYPATH
-    - /bin/cp composer.json $DEPLOYPATH
-    - /bin/cp composer.lock $DEPLOYPATH
-    - /bin/cp spark $DEPLOYPATH
-    - /bin/cp preload.php $DEPLOYPATH
-    - /bin/cp .env $DEPLOYPATH
+    
