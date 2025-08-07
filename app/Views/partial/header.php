@@ -23,6 +23,7 @@ $request = Services::request();
 
     <?php if (ENVIRONMENT == 'development' || get_cookie('debug') == 'true' || $request->getGet('debug') == 'true') : ?>
         <!-- inject:debug:css -->
+        <link rel="stylesheet" href="resources/css/jquery-ui-fe010342cb.css">
         <link rel="stylesheet" href="resources/css/bootstrap-dialog-1716ef6e7c.css">
         <link rel="stylesheet" href="resources/css/jasny-bootstrap-40bf85f3ed.css">
         <link rel="stylesheet" href="resources/css/bootstrap-datetimepicker-66374fba71.css">
@@ -39,7 +40,7 @@ $request = Services::request();
         <link rel="stylesheet" href="resources/css/ospos_print-2ba645b044.css">
         <link rel="stylesheet" href="resources/css/ospos-aef2a8c58d.css">
         <link rel="stylesheet" href="resources/css/popupbox-7b616030b0.css">
-        <link rel="stylesheet" href="resources/css/receipt-a171207d8e.css">
+        <link rel="stylesheet" href="resources/css/receipt-c17902b8ce.css">
         <link rel="stylesheet" href="resources/css/register-58be93b261.css">
         <link rel="stylesheet" href="resources/css/reports-407b727797.css">
         <!-- endinject -->
@@ -81,7 +82,7 @@ $request = Services::request();
         <!-- endinject -->
     <?php else : ?>
         <!--inject:prod:css -->
-        <link rel="stylesheet" href="resources/opensourcepos-8e34d6a398.min.css">
+        <link rel="stylesheet" href="resources/opensourcepos-a8163f537a.min.css">
         <!-- endinject -->
 
         <!-- Tweaks to the UI for a particular theme should drop here  -->
