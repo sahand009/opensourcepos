@@ -1,24 +1,13 @@
 ---
 deployment:
   tasks:
-    # Set the deployment path to public_html
-    - export DEPLOYPATH=/home/username/public_html
-    
-    # Copy all files except those in .gitignore
-    - /bin/cp -R * $DEPLOYPATH/
-    
-    # Copy hidden files (.htaccess, etc.)
-    - /bin/cp -R .htaccess $DEPLOYPATH/ 2>/dev/null || true
-    
-    # Set proper permissions for writable directories
-    - chmod -R 755 $DEPLOYPATH/writable/
-    - chmod -R 755 $DEPLOYPATH/public/
-    
-    # Install composer dependencies if composer.json exists
-    - cd $DEPLOYPATH && /usr/local/bin/composer install --no-dev --optimize-autoloader 2>/dev/null || true
-    
-    # Clear any existing cache
-    - rm -rf $DEPLOYPATH/writable/cache/* 2>/dev/null || true
-    
-    # Set environment to production
-    - cd $DEPLOYPATH && cp .env.example .env 2>/dev/null || true
+    - export DEPLOYPATH=/home/username/public_html/
+    - /bin/cp -R app $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R vendor $DEPLOYPATH
+    - /bin/cp -R writable $DEPLOYPATH
+    - /bin/cp composer.json $DEPLOYPATH
+    - /bin/cp composer.lock $DEPLOYPATH
+    - /bin/cp spark $DEPLOYPATH
+    - /bin/cp preload.php $DEPLOYPATH
+    - /bin/cp .env.example $DEPLOYPATH/.env
