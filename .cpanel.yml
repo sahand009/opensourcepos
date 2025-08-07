@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/shinchauorg/1.shinchau.org/
+    - export DEPLOYPATH=/home/shinchauorg/public_html/
     - /bin/cp -R app $DEPLOYPATH
     - /bin/cp -R public $DEPLOYPATH
     - /bin/cp -R vendor $DEPLOYPATH
