@@ -102,3 +102,14 @@ debug_*.php
 
 # Deployment trigger files
 .deployment-trigger
+
+# cPanel specific files
+.cpanel/
+.well-known/
+error_log
+access_log
+*.log
+
+# Temporary deployment files
+.git-rewrite/
+.deployment-backup/
