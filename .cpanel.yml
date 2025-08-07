@@ -1,8 +1,7 @@
 ---
-# cPanel deployment configuration - force sync fix
+# cPanel deployment configuration - clean deployment
 deployment:
   tasks:
-    - /bin/git reset --hard HEAD  # Force clean state
     - export DEPLOYPATH=/public_html/
     - /bin/cp -R app $DEPLOYPATH
     - /bin/cp -R public/* $DEPLOYPATH
