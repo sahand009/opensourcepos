@@ -10,4 +10,4 @@ deployment:
     - /bin/cp composer.lock $DEPLOYPATH
     - /bin/cp spark $DEPLOYPATH
     - /bin/cp preload.php $DEPLOYPATH
-    - /bin/cp .env.example $DEPLOYPATH/.env
+    - /bin/cp .env-example $DEPLOYPATH/.env
