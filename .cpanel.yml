@@ -1,5 +1,5 @@
 ---
-# cPanel deployment configuration - updated for branch switching fix
+# cPanel deployment configuration - force sync fix
 deployment:
   tasks:
     - export DEPLOYPATH=/public_html/
