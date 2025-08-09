@@ -106,7 +106,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group form-group-sm">
             <?= form_label(lang('Items.tax_2'), 'tax_percent_2', ['class' => 'control-label col-xs-3']) ?>
             <div class="col-xs-4">

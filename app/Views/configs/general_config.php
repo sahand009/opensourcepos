@@ -1,7 +1,17 @@
 <?php
 /**
- * @var array $themes
- * @var array $image_allowed_types
+ * @var array $the                        <div class="col-sm-7">
+                            <?php 
+                            $bootstrap_version = (file_exists('resources/bootswatch5/' . esc($config['theme']))) ? '5' : '3';
+                            $theme_url = ($bootstrap_version == '5') 
+                                ? 'https://bootswatch.com/5/' . ('bootstrap' == ($config['theme']) ? 'default' : esc($config['theme']))
+                                : 'https://bootswatch.com/3/' . ('bootstrap' == ($config['theme']) ? 'default' : esc($config['theme']));
+                            ?>
+                            <a href="<?= $theme_url ?>" target="_blank" rel="noopener">
+                                <span><?= lang('Config.theme_preview') . ' ' . ucfirst(esc($config['theme'])) . ' (Bootstrap ' . $bootstrap_version . ')' ?></span>
+                                <span class="glyphicon glyphicon-new-window"></span>
+                            </a>
+                        </div>* @var array $image_allowed_types
  * @var array $selected_image_allowed_types
  * @var bool $show_office_group
  * @var string $controller_name

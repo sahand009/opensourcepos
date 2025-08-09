@@ -160,6 +160,40 @@ class Items extends Secure_Controller
 
 
     /**
+     * Debug method to test image paths
+     * @noinspection PhpUnused
+     */
+    public function debugImagePaths(): void
+    {
+        $upload_path = FCPATH . 'uploads/item_pics/';
+        $default_image = FCPATH . 'public/images/no-img.png';
+        
+        echo "<h3>Debug Image Paths</h3>";
+        echo "<p>FCPATH: " . FCPATH . "</p>";
+        echo "<p>Upload path: " . $upload_path . "</p>";
+        echo "<p>Upload path exists: " . (is_dir($upload_path) ? 'Yes' : 'No') . "</p>";
+        echo "<p>Default image path: " . $default_image . "</p>";
+        echo "<p>Default image exists: " . (file_exists($default_image) ? 'Yes' : 'No') . "</p>";
+        echo "<p>Base URL: " . base_url() . "</p>";
+        echo "<p>Default image URL: " . base_url('images/no-img.png') . "</p>";
+        
+        echo "<h4>Files in upload directory:</h4>";
+        $files = glob($upload_path . '*');
+        foreach ($files as $file) {
+            echo "<p>" . basename($file) . "</p>";
+        }
+        
+        echo "<h4>Test default image display:</h4>";
+        echo '<img src="' . base_url('images/no-img.png') . '" style="max-width:100px;" alt="Default image test">';
+        
+        echo "<h4>Test with absolute path:</h4>";
+        echo '<img src="/images/no-img.png" style="max-width:100px;" alt="Absolute path test">';
+        
+        echo "<h4>Direct file check:</h4>";
+        echo "<p>no-img.png exists: " . (file_exists(FCPATH . 'images/no-img.png') ? 'Yes' : 'No') . "</p>";
+    }
+
+    /**
      * AJAX function. Processes thumbnail of image. Called via tabular_helper
      * @param string $pic_filename
      * @return void
@@ -168,6 +202,14 @@ class Items extends Secure_Controller
     public function getPicThumb(string $pic_filename): void
     {
         helper('file');
+
+        // Sanitize the filename to prevent directory traversal
+        $pic_filename = basename($pic_filename);
+        
+        if (empty($pic_filename) || $pic_filename === '.' || $pic_filename === '..') {
+            $this->serveDefaultImage();
+            return;
+        }
 
         $file_extension = pathinfo($pic_filename, PATHINFO_EXTENSION);
         $upload_path = FCPATH . 'uploads/item_pics/';
@@ -179,7 +221,7 @@ class Items extends Secure_Controller
             $images = glob($upload_path . $pic_filename);
         }
         
-        if (sizeof($images) > 0) {
+        if (sizeof($images) > 0 && file_exists($images[0])) {
             $image_path = $images[0];
             $actual_extension = pathinfo($image_path, PATHINFO_EXTENSION);
             $base_path = $upload_path . pathinfo($pic_filename, PATHINFO_FILENAME);
@@ -194,7 +236,7 @@ class Items extends Secure_Controller
                         ->save($thumb_path);
                 } catch (Exception $e) {
                     // If thumbnail creation fails, serve original image
-                    log_message('error', 'Thumbnail creation failed: ' . $e->getMessage());
+                    log_message('error', 'Thumbnail creation failed for ' . $pic_filename . ': ' . $e->getMessage());
                     $this->serveImage($image_path);
                     return;
                 }
@@ -208,14 +250,21 @@ class Items extends Secure_Controller
             }
         } else {
             // No image found, serve default
-            $default_image = FCPATH . 'public/images/no-img.png';
-            if (file_exists($default_image)) {
-                $this->serveImage($default_image);
-            } else {
-                // Return 404 if no default image
-                $this->response->setStatusCode(404);
-                $this->response->send();
-            }
+            log_message('debug', 'No image found for filename: ' . $pic_filename);
+            $this->serveDefaultImage();
+        }
+    }
+
+    private function serveDefaultImage(): void
+    {
+        $default_image = FCPATH . 'public/images/no-img.png';
+        if (file_exists($default_image)) {
+            $this->serveImage($default_image);
+        } else {
+            // Return 404 if no default image
+            log_message('error', 'No default image found at: ' . $default_image);
+            $this->response->setStatusCode(404);
+            $this->response->send();
         }
     }
 
@@ -420,11 +469,11 @@ class Items extends Secure_Controller
         if ($item_info->pic_filename != null) {
             $file_extension = pathinfo($item_info->pic_filename, PATHINFO_EXTENSION);
             if (empty($file_extension)) {
-                $images = glob("./uploads/item_pics/$item_info->pic_filename.*");
+                $images = glob(FCPATH . "uploads/item_pics/$item_info->pic_filename.*");
             } else {
-                $images = glob("./uploads/item_pics/$item_info->pic_filename");
+                $images = glob(FCPATH . "uploads/item_pics/$item_info->pic_filename");
             }
-            $data['image_path']    = sizeof($images) > 0 ? base_url($images[0]) : '';
+            $data['image_path']    = sizeof($images) > 0 ? base_url('uploads/item_pics/' . basename($images[0])) : '';
         } else {
             $data['image_path']    = '';
         }

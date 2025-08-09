@@ -199,13 +199,32 @@ class Config extends Secure_Controller
     {
         $themes = [];
 
-        // Read all themes in the dist folder
-        $dir = new DirectoryIterator('resources/bootswatch');
+        // Read all themes in the Bootstrap 5 dist folder first (preferred)
+        $bootstrap5_dir = 'resources/bootswatch5';
+        if (is_dir($bootstrap5_dir)) {
+            $dir = new DirectoryIterator($bootstrap5_dir);
 
-        foreach ($dir as $dirinfo) {    // TODO: $dirinfo doesn't follow naming convention
-            if ($dirinfo->isDir() && !$dirinfo->isDot() && $dirinfo->getFileName() != 'fonts') {
-                $file = $dirinfo->getFileName();
-                $themes[$file] = ucfirst($file);
+            foreach ($dir as $dirinfo) {    // TODO: $dirinfo doesn't follow naming convention
+                if ($dirinfo->isDir() && !$dirinfo->isDot() && $dirinfo->getFileName() != 'fonts') {
+                    $file = $dirinfo->getFileName();
+                    $themes[$file] = ucfirst($file) . ' (Bootstrap 5)';
+                }
+            }
+        }
+
+        // Read Bootstrap 3 themes as fallback
+        $bootstrap3_dir = 'resources/bootswatch';
+        if (is_dir($bootstrap3_dir)) {
+            $dir = new DirectoryIterator($bootstrap3_dir);
+
+            foreach ($dir as $dirinfo) {    // TODO: $dirinfo doesn't follow naming convention
+                if ($dirinfo->isDir() && !$dirinfo->isDot() && $dirinfo->getFileName() != 'fonts') {
+                    $file = $dirinfo->getFileName();
+                    // Only add if not already present from Bootstrap 5
+                    if (!isset($themes[$file])) {
+                        $themes[$file] = ucfirst($file) . ' (Bootstrap 3)';
+                    }
+                }
             }
         }
 

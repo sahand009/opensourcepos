@@ -204,7 +204,9 @@ gulp.task('debug-css', function() {
         './node_modules/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css',
         './node_modules/bootstrap-tagsinput-2021/src/bootstrap-tagsinput.css',
         './node_modules/bootstrap-toggle/css/bootstrap-toggle.css',
+        './node_modules/bootstrap-icons/font/bootstrap-icons.css',
         './public/css/bootstrap.autocomplete.css',
+        './public/css/bootstrap5-compatibility.css',
         './public/css/invoice.css',
         './public/css/ospos_print.css',
         './public/css/ospos.css',
@@ -230,12 +232,14 @@ gulp.task('prod-css', function() {
         './node_modules/bootstrap-table/dist/bootstrap-table.min.css',
         './node_modules/bootstrap-table/dist/extensions/sticky-header/bootstrap-table-sticky-header.min.css',
         './node_modules/bootstrap-toggle/css/bootstrap-toggle.min.css',
+        './node_modules/bootstrap-icons/font/bootstrap-icons.css',
         './node_modules/chartist/dist/chartist.min.css']);
 
     var opensourcepos4css = gulp.src('./node_modules/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css').pipe(cleanCSS({compatibility: 'ie8'}));
 
     var opensourcepos5css = gulp.src(['./node_modules/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css',
         './public/css/bootstrap.autocomplete.css',
+        './public/css/bootstrap5-compatibility.css',
         './public/css/invoice.css',
         './public/css/ospos.css',
         './public/css/ospos_print.css',
@@ -254,7 +258,10 @@ gulp.task('prod-css', function() {
 
 
 gulp.task('copy-fonts', function() {
-    return pipeline(gulp.src('./node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.*', {encoding: false}),rev(),gulp.dest('public/resources'));
+    // Copy Bootstrap 3 glyphicons
+    pipeline(gulp.src('./node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.*', {encoding: false}),rev(),gulp.dest('public/resources'));
+    // Copy Bootstrap Icons
+    return pipeline(gulp.src('./node_modules/bootstrap-icons/font/fonts/bootstrap-icons.*', {encoding: false}),gulp.dest('public/resources/fonts'));
 });
 
 

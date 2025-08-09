@@ -475,22 +475,23 @@ function get_item_data_row(object $item): array
         
         $images = glob($pattern);
         
-        if (!empty($images)) {
+        if (!empty($images) && file_exists($images[0])) {
             $rel_path = 'uploads/item_pics/' . basename($images[0]);
-            $thumb_url = base_url('Items/getPicThumb/' . urlencode($item->pic_filename));
             
-            // Use thumbnail functionality
+            // Use direct image path instead of thumbnail for now
             $image = '<a class="rollover" href="' . base_url($rel_path) . '">
-                    <img src="' . $thumb_url . '"
+                    <img src="' . base_url($rel_path) . '"
                          onerror="this.src=\''.base_url('images/no-img.png').'\';this.onerror=null;" 
                          style="max-width:40px;max-height:40px; object-fit: cover;">
                     </a>';
         } else {
-            $image = '<img src="'.base_url('images/no-img.png').'" style="max-width:40px;max-height:40px;">';
+            // File doesn't exist, use default image directly
+            $image = '<img src="'.base_url('images/no-img.png').'" style="max-width:40px;max-height:40px;" alt="No image available" title="No image for: ' . htmlspecialchars($item->pic_filename) . '">';
         }
     } else {
-    $image = '<img src="'.base_url('public/images/no-img.png').'" style="max-width:40px;max-height:40px;">';
-}
+        // No filename specified, use default image
+        $image = '<img src="'.base_url('images/no-img.png').'" style="max-width:40px;max-height:40px;" alt="No image specified" title="No pic_filename set">';
+    }
 
     if ($config['multi_pack_enabled']) {
         $item->name .= NAME_SEPARATOR . $item->pack_name;
