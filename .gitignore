@@ -102,3 +102,7 @@ debug_*.php
 
 # Deployment trigger files
 .deployment-trigger
+
+# Temporary deployment files
+.git-rewrite/
+.deployment-backup/
