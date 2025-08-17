@@ -90,87 +90,6 @@ a.none {
     display: block;
 }
 
-/* Responsive improvements for navigation */
-.navbar-toggle {
-    background: transparent;
-    border: 1px solid #ddd;
-    padding: 8px 12px;
-    margin: 8px 0;
-}
-
-.navbar-toggle .icon-bar {
-    display: block;
-    width: 18px;
-    height: 2px;
-    background-color: #888;
-    margin: 3px 0;
-    transition: 0.3s;
-}
-
-.navbar-toggle:hover .icon-bar {
-    background-color: #333;
-}
-
-/* Mobile navigation improvements */
-@media (max-width: 767px) {
-    .topbar {
-        font-size: 11px;
-        padding: 0.2em;
-    }
-    
-    .topbar .navbar-center {
-        display: none;
-    }
-    
-    .topbar .navbar-left,
-    .topbar .navbar-right {
-        font-size: 10px;
-    }
-    
-    .navbar-collapse {
-        border-top: 1px solid #e7e7e7;
-        margin-top: 8px;
-        padding-top: 8px;
-    }
-    
-    .navbar-nav {
-        margin: 0;
-    }
-    
-    .navbar-nav > li > a {
-        padding: 12px 15px;
-        border-bottom: 1px solid #e7e7e7;
-    }
-    
-    .navbar-nav > li:last-child > a {
-        border-bottom: none;
-    }
-    
-    .navbar .menu-icon {
-        text-align: left;
-        padding: 12px 15px;
-    }
-    
-    .navbar .menu-icon img {
-        width: 20px;
-        height: 20px;
-        margin-right: 10px;
-        vertical-align: middle;
-    }
-}
-
-/* Very small mobile devices */
-@media (max-width: 575px) {
-    .topbar .navbar-left {
-        display: none;
-    }
-    
-    .topbar .navbar-right {
-        text-align: center;
-        width: 100%;
-    }
-}
-
 #config_wrapper {
     text-align: center;
 }
@@ -257,3 +176,120 @@ label.required {
 .font-monospace {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+
+/* Bootstrap 5 Responsive Enhancements */
+@media (max-width: 576px) {
+    .btn-toolbar .btn {
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+    
+    .form-horizontal .form-label {
+        text-align: left !important;
+        margin-bottom: 0.5rem;
+    }
+    
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    #home_module_list .module_item {
+        min-height: 80px;
+    }
+    
+    #home_module_list .card-body {
+        padding: 0.5rem !important;
+    }
+    
+    #home_module_list img {
+        height: 32px !important;
+        max-width: 32px !important;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    /* Very small screens - single column */
+    #home_module_list .col-12 {
+        max-width: 100%;
+    }
+}
+
+/* Extra small screens optimization */
+@media (max-width: 350px) {
+    #home_module_list .module_item {
+        min-height: 60px;
+    }
+    
+    #home_module_list .small {
+        font-size: 0.75rem !important;
+    }
+    
+    .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .container-xl {
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+    
+    #home_module_list .module_item {
+        min-height: 100px;
+    }
+    
+    /* Two columns on small tablets */
+    #home_module_list .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 769px) {
+    #home_module_list .module_item {
+        min-height: 160px;
+    }
+}
+
+/* Improved form responsiveness */
+.form-horizontal .row {
+    margin-bottom: 1rem;
+}
+
+.card-body .form-group {
+    margin-bottom: 1rem;
+}
+
+/* Better table responsiveness */
+.table-responsive {
+    border: none;
+}
+
+.fixed-table-container {
+    border: 1px solid #dee2e6;
+}
+
+/* Mobile-friendly buttons */
+.btn-toolbar {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.btn-group {
+    flex-wrap: wrap;
+}
+
+/* Responsive navigation improvements */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background-color: rgba(248, 249, 250, 0.95);
+        padding: 1rem;
+        border-radius: 0.375rem;
+        margin-top: 0.5rem;
+    }
+}
+

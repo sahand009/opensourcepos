@@ -1,0 +1,722 @@
+/* Additional responsive fixes for OSPOS Bootstrap 5 */
+
+/* Ensure main wrapper is responsive */
+.wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Fix topbar responsiveness */
+.topbar {
+    width: 100%;
+    overflow: hidden;
+}
+
+.topbar .container-fluid {
+    padding: 0 15px;
+}
+
+/* Mobile-first responsive navbar */
+.navbar .navbar-toggler {
+    border: none;
+    padding: 0.25rem 0.5rem;
+}
+
+.navbar .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar .menu-icon {
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+.navbar .menu-icon img {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 0.25rem;
+}
+
+.navbar .menu-icon small {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    color: inherit;
+}
+
+/* Hide navbar toggler on desktop */
+@media (min-width: 992px) {
+    .navbar-toggler {
+        display: none !important;
+    }
+    
+    .navbar-collapse {
+        display: flex !important;
+        flex-basis: auto;
+    }
+    
+    .navbar-nav {
+        flex-direction: row;
+    }
+    
+    .navbar .menu-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0.5rem;
+    }
+    
+    .navbar .menu-icon img {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 0.25rem;
+    }
+}
+
+/* Show navbar toggler only on mobile/tablet */
+@media (max-width: 991.98px) {
+    .navbar-toggler {
+        display: block;
+        border: none;
+        padding: 0.25rem 0.5rem;
+    }
+    
+    .navbar-collapse {
+        width: 100%;
+    }
+    
+    .navbar-collapse:not(.show) {
+        display: none;
+    }
+    
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .navbar-nav .nav-item {
+        width: 100%;
+        border-bottom: 1px solid #e9ecef;
+    }
+    
+    .navbar-nav .nav-item:last-child {
+        border-bottom: none;
+    }
+    
+    .navbar .menu-icon {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1rem;
+        width: 100%;
+    }
+    
+    .navbar .menu-icon img {
+        width: 20px;
+        height: 20px;
+        margin-right: 0.75rem;
+        margin-bottom: 0;
+    }
+    
+    .navbar .menu-icon small {
+        font-size: 0.875rem;
+        flex: 1;
+    }
+}
+
+/* Tablet specific adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .navbar .menu-icon img {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* Responsive module items */
+.module_item {
+    min-width: 5em;
+    margin: 0.25em;
+}
+
+/* Responsive tables */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Bootstrap Table mobile responsiveness */
+#table {
+    min-width: 100%;
+}
+
+.bootstrap-table .table {
+    margin-bottom: 0;
+}
+
+/* Toolbar responsiveness */
+#toolbar {
+    margin-bottom: 1rem;
+}
+
+#toolbar .d-flex {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Button responsiveness */
+.btn-toolbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 767.98px) {
+    .topbar {
+        font-size: 11px;
+        padding: 0.1em;
+    }
+    
+    .topbar .navbar-center {
+        font-size: 12px;
+    }
+    
+    .navbar .menu-icon {
+        padding: 0.25rem;
+    }
+    
+    .navbar .menu-icon img {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .navbar .menu-icon small {
+        font-size: 0.7rem;
+    }
+    
+    #page_title {
+        font-size: 18px;
+    }
+    
+    .module_item {
+        min-width: 4em;
+        margin: 0.15em;
+    }
+    
+    /* Stack buttons vertically on mobile */
+    #title_bar .d-flex {
+        flex-direction: column;
+    }
+    
+    #toolbar .d-flex {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    #toolbar .btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        min-width: auto;
+    }
+    
+    /* Only make specific buttons full width on very small screens */
+    @media (max-width: 575.98px) {
+        #toolbar .btn {
+            flex: 1 1 calc(50% - 0.25rem);
+            min-width: 120px;
+        }
+        
+        #toolbar .btn:only-child {
+            flex: 1 1 100%;
+        }
+    }
+    
+    /* Make form inputs full width on mobile */
+    .form-control {
+        width: 100% !important;
+    }
+    
+    .selectpicker {
+        width: 100% !important;
+    }
+    
+    /* Ensure tables are responsive */
+    .table-responsive {
+        overflow-x: auto;
+        border: none;
+    }
+    
+    /* Make forms stack better on mobile */
+    .row.g-3 .col-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    .row.g-3 .col-8 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    /* Bootstrap table mobile optimizations */
+    .bootstrap-table .table {
+        font-size: 0.875rem;
+    }
+    
+    .bootstrap-table .table th,
+    .bootstrap-table .table td {
+        padding: 0.5rem 0.25rem;
+        white-space: nowrap;
+    }
+    
+    /* Hide less important columns on mobile */
+    .table .d-none.d-md-table-cell {
+        display: none !important;
+    }
+    
+    /* Responsive pagination */
+    .pagination {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .page-link {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.875rem;
+    }
+}
+
+/* Tablet responsive adjustments */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .navbar .menu-icon img {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .row.g-3 .col-3 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+    
+    .row.g-3 .col-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+    
+    #toolbar .d-flex {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+/* Large screen adjustments */
+@media (min-width: 992px) {
+    #title_bar .d-flex {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    
+    #toolbar .d-flex {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+}
+
+/* Ensure container-fluid takes full width */
+.container-fluid {
+    width: 100%;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Fix any fixed width issues */
+* {
+    box-sizing: border-box;
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Responsive tables */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+/* Responsive navigation tabs */
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 1rem;
+}
+
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-radius: 0.375rem 0.375rem 0 0;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 767.98px) {
+    .nav-tabs {
+        flex-wrap: wrap;
+        border-bottom: none;
+    }
+    
+    .nav-tabs .nav-item {
+        flex: 1 1 calc(50% - 0.25rem);
+        margin: 0.125rem;
+    }
+    
+    .nav-tabs .nav-link {
+        padding: 0.375rem 0.5rem;
+        font-size: 0.875rem;
+        text-align: center;
+        border: 1px solid #dee2e6;
+        border-radius: 0.375rem;
+        margin-bottom: 0.25rem;
+    }
+    
+    .nav-tabs .nav-link.active {
+        background-color: #007bff;
+        color: white;
+        border-color: #007bff;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .nav-tabs .nav-item {
+        flex: 1 1 100%;
+    }
+    
+    .nav-tabs .nav-link {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Fix button layouts - prevent full width on mobile unless intended */
+@media (max-width: 767.98px) {
+    #toolbar .btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        margin: 0.125rem;
+    }
+    
+    #title_bar .btn {
+        flex: 0 0 auto;
+        margin: 0.125rem;
+        white-space: nowrap;
+    }
+    
+    /* Button flex container improvements */
+    #title_bar .d-flex.flex-wrap,
+    #toolbar .d-flex.flex-wrap {
+        gap: 0.5rem !important;
+    }
+    
+    /* Only specific buttons should be full width */
+    .btn-block,
+    .modal-dlg.btn {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+/* Advanced mobile table handling */
+@media (max-width: 575.98px) {
+    /* Convert table to cards on very small screens */
+    .table-responsive-stack {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .table-responsive-stack thead {
+        display: none;
+    }
+    
+    .table-responsive-stack tbody,
+    .table-responsive-stack tr,
+    .table-responsive-stack td {
+        display: block;
+        width: 100%;
+    }
+    
+    .table-responsive-stack tr {
+        border: 1px solid #dee2e6;
+        border-radius: 0.375rem;
+        margin-bottom: 1rem;
+        padding: 0.75rem;
+        background: #fff;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+    
+    .table-responsive-stack td {
+        border: none;
+        padding: 0.5rem 0;
+        text-align: left;
+        position: relative;
+        padding-left: 40%;
+    }
+    
+    .table-responsive-stack td:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 0;
+        width: 35%;
+        text-align: left;
+        font-weight: bold;
+        color: #6c757d;
+    }
+}
+
+/* Navbar toggler animation */
+.navbar-toggler {
+    border: none;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+/* Better button spacing in toolbars */
+.btn + .btn {
+    margin-left: 0.25rem;
+}
+
+@media (max-width: 767.98px) {
+    .btn + .btn {
+        margin-left: 0;
+        margin-top: 0.25rem;
+    }
+    
+    /* Enhanced table responsiveness for manage pages */
+    .table-responsive table {
+        font-size: 0.875rem;
+    }
+    
+    .table-responsive table th,
+    .table-responsive table td {
+        min-width: 100px;
+        white-space: nowrap;
+        padding: 0.375rem 0.25rem;
+    }
+    
+    .table-responsive table .btn-group {
+        min-width: 120px;
+    }
+    
+    .table-responsive table .btn {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.375rem;
+    }
+}
+
+/* Enhanced mobile table stack layout */
+@media (max-width: 575.98px) {
+    .table-responsive-stack {
+        border: 0;
+    }
+    
+    .table-responsive-stack thead {
+        display: none !important;
+    }
+    
+    .table-responsive-stack tbody tr {
+        display: block;
+        border: 1px solid #dee2e6;
+        margin-bottom: 0.75rem;
+        border-radius: 0.375rem;
+        background: #fff;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        padding: 0.75rem;
+    }
+    
+    .table-responsive-stack tbody td {
+        display: block;
+        text-align: right;
+        border: none;
+        border-bottom: 1px solid #e9ecef;
+        padding: 0.5rem 0;
+        position: relative;
+        padding-left: 45%;
+    }
+    
+    .table-responsive-stack tbody td:last-child {
+        border-bottom: none;
+    }
+    
+    .table-responsive-stack tbody td:before {
+        content: attr(data-label) ": ";
+        position: absolute;
+        left: 0;
+        width: 40%;
+        text-align: left;
+        font-weight: 600;
+        color: #495057;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .table-responsive-stack tbody td .btn-group {
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 0.25rem;
+        flex-wrap: wrap;
+    }
+    
+    .table-responsive-stack tbody td .btn {
+        margin: 0.125rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Management pages button layout fixes - applies to all modules */
+#title_bar .d-flex.flex-wrap {
+    justify-content: flex-end;
+}
+
+#toolbar .d-flex.flex-wrap {
+    justify-content: flex-start;
+}
+
+/* Specific page fixes when needed */
+.customers #title_bar .d-flex.flex-wrap,
+.employees #title_bar .d-flex.flex-wrap,
+.item_kits #title_bar .d-flex.flex-wrap,
+.items #title_bar .d-flex.flex-wrap,
+.giftcards #title_bar .d-flex.flex-wrap,
+.expenses #title_bar .d-flex.flex-wrap,
+.expenses_categories #title_bar .d-flex.flex-wrap,
+.attributes #title_bar .d-flex.flex-wrap,
+.cashups #title_bar .d-flex.flex-wrap {
+    justify-content: flex-end;
+}
+
+@media (max-width: 767.98px) {
+    /* General mobile button layout for all management pages */
+    #title_bar .d-flex.flex-wrap,
+    #toolbar .d-flex.flex-wrap {
+        justify-content: stretch !important;
+        flex-direction: column;
+    }
+    
+    #title_bar .btn,
+    #toolbar .btn {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.25rem;
+        flex: 1 1 100%;
+    }
+    
+    /* Ensure buttons don't get too narrow */
+    #title_bar .btn,
+    #toolbar .btn {
+        min-width: 120px;
+    }
+    
+    /* Fix checkboxes in mobile tables */
+    .table-responsive-stack tbody td input[type="checkbox"] {
+        width: auto;
+        margin: 0;
+    }
+}
+
+/* Modal form fixes */
+.modal .tab-content {
+    padding: 1rem 0;
+    min-height: 300px;
+}
+
+.modal .tab-pane {
+    min-height: 200px;
+    display: block !important;
+}
+
+.modal .tab-pane:not(.show) {
+    display: none !important;
+}
+
+.modal .tab-pane.show.active {
+    display: block !important;
+}
+
+.modal fieldset {
+    border: none;
+    padding: 0;
+    min-height: 1px;
+}
+
+.modal .form-label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.modal .row.mb-3 {
+    margin-bottom: 1rem !important;
+    align-items: center;
+    display: flex !important;
+}
+
+.modal .form-check-input {
+    margin-top: 0.125rem;
+}
+
+.modal .input-group-sm {
+    font-size: 0.875rem;
+}
+
+.modal .required:before {
+    content: "* ";
+    color: red;
+}
+
+/* Tab navigation fixes for modals */
+.modal .nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 1rem;
+}
+
+.modal .nav-tabs .nav-link {
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-bottom-color: transparent;
+}
+
+.modal .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #fff;
+    border-color: #dee2e6 #dee2e6 #fff;
+}
+
+/* Debug modal content issues */
+.modal-body {
+    min-height: 400px;
+}
+
+.modal-body form {
+    width: 100%;
+}
+
+.modal-body .tab-content {
+    width: 100%;
+}
+
+/* Ensure modal content is visible */
+.modal.show .modal-dialog {
+    display: flex;
+    align-items: center;
+}
+
+.modal.show .modal-content {
+    width: 100%;
+}
