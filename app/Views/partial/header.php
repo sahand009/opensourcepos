@@ -89,7 +89,7 @@ $request = Services::request();
         <!-- endinject -->
     <?php else : ?>
         <!--inject:prod:css -->
-        <link rel="stylesheet" href="resources/opensourcepos-a8163f537a.min.css">
+        <link rel="stylesheet" href="resources/opensourcepos-58150dd8b3.min.css">
         <!-- endinject -->
 
         <!-- Tweaks to the UI for a particular theme should drop here  -->
