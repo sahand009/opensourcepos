@@ -33,20 +33,29 @@
             <div class="form-group form-group-sm">
                 <?= form_label(lang('Config.company_logo'), 'company_logo', ['class' => 'control-label col-xs-2']) ?>
                 <div class="col-xs-6">
-                    <div class="fileinput <?= $logo_exists ? 'fileinput-exists' : 'fileinput-new' ?>" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;"></div>
-                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;">
-                            <img data-src="holder.js/100%x100%" alt="<?= lang('Config.company_logo') ?>" src="<?php if ($logo_exists) echo base_url('uploads/' . $config['company_logo']); else echo '' ?>" style="max-height: 100%; max-width: 100%;">
+                    <div class="company-logo-responsive" style="margin-bottom:8px;">
+                        <div class="company-logo-box" style="border:1px solid #ccc; border-radius:4px; width:100%; max-width:220px; height:0; padding-bottom:56%; position:relative; background:#fafafa; display:flex; align-items:center; justify-content:center;">
+                            <?php if ($logo_exists): ?>
+                                <img src="<?= base_url('uploads/' . $config['company_logo']) ?>" alt="<?= lang('Config.company_logo') ?>" style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:contain;">
+                            <?php else: ?>
+                                <span style="color:#bbb; font-size:14px; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);">No Image</span>
+                            <?php endif; ?>
                         </div>
-                        <div>
-                            <span class="btn btn-default btn-sm btn-file">
-                                <span class="fileinput-new"><?= lang('Config.company_select_image') ?></span>
-                                <span class="fileinput-exists"><?= lang('Config.company_change_image') ?></span>
-                                <input type="file" name="company_logo">
-                            </span>
-                            <a href="#" class="btn btn-default btn-sm fileinput-exists" data-dismiss="fileinput"><?= lang('Config.company_remove_image') ?></a>
+                        <div style="margin-top:8px;">
+                            <input type="file" name="company_logo" accept="image/*" style="display:inline-block;">
                         </div>
                     </div>
+                    <style>
+                        @media (max-width: 600px) {
+                            .company-logo-responsive {
+                                max-width: 100%;
+                            }
+                            .company-logo-box {
+                                max-width: 100%;
+                                padding-bottom: 56%;
+                            }
+                        }
+                    </style>
                 </div>
             </div>
 
